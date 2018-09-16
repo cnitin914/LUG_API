@@ -1,0 +1,1 @@
+Insert into goal values('excercise');

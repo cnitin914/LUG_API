@@ -1,0 +1,58 @@
+In first cmd window
+mongod -dbpath C:\MongoDB\data\db
+In second cmd window
+mongo
+show dbs
+use LUG
+show collections
+db.goal.find()
+
+db.createUser( { user: "admin",
+                 pwd: "admin",
+                  roles: [ { role: "clusterAdmin", db: "admin" },
+                          { role: "readAnyDatabase", db: "admin" },
+                          "readWrite"] }
+                )
+
+
+db.createCollection("user");
+
+db.user.insert({first_name:"Nitin",
+		last_name:"Chauhan",
+		sex:"M",
+		dob:"30/10/1975",
+		user_id:"nitchauh",
+		password:"123",
+		id:1
+		});
+
+
+db.user.insert({first_name:"Dolly",
+		last_name:"Chauhan",
+		sex:"M",
+		dob:"12/12/1981",
+		user_id:"dolchauh",
+		password:"123",
+		id:2
+		});
+
+db.user.insert({first_name:"Akshansh",
+		last_name:"Chauhan",
+		sex:"M",
+		dob:"10/12/1981",
+		user_id:"dolchauh",
+		password:"123",
+		id:2
+		});
+db.createCollection("goal");
+
+db.goal.insert({id:1, 
+		name:"Pooja"});
+db.goal.insert({id:2, 
+		name:"Study"})
+db.createCollection("goalTracker");
+db.goalTracker.insert({user_id:1,goal_id:1,date:"28/12/2017",met:"Y"});
+
+db.user.update({*},{$rename:{"sex","gender"}})
+
+db.user.update( {"first_name":"Dolly"},{$set:{"sex":"F"}} )
